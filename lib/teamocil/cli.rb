@@ -20,11 +20,11 @@ module Teamocil
         return print_layouts
       end
 
-      if @options[:layout].nil? && argv[0].nil?
-        bail "You must supply a layout for teamocil to use. See `teamocil --help` for more options."
-      end
-
       file = @options[:layout] || ::File.join(layout_path, "#{argv[0]}.yml")
+
+      if @options[:layout].nil? && (argv[0].nil? or argv[0].to_s.empty?)
+        file = "./teamocil.yml"
+      end
 
       if @options[:edit]
         ::FileUtils.touch file unless File.exists?(file)

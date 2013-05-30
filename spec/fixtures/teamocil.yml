@@ -1,0 +1,21 @@
+# Simple two windows layout
+session:
+  name: "test"
+  windows:
+    - name: "foo"
+      clear: true
+      root: "/foo"
+      layout: "tiled"
+      panes:
+        - cmd: "echo 'foo'"
+        - cmd: "echo 'foo again'"
+    - name: "bar"
+      root: "/bar"
+      splits:
+        - cmd:
+          - "echo 'bar'"
+          - "echo 'bar in an array'"
+          target: bottom-right
+        - cmd: "echo 'bar again'"
+          focus: true
+          width: 50
